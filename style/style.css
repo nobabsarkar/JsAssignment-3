@@ -1,0 +1,15 @@
+.header-section {
+  width: 100%;
+  background-color: red;
+}
+.border-bottom {
+  border-bottom: 1px solid #80808047;
+}
+.list-style {
+  list-style-type: none;
+}
+.news-list li {
+  margin-left: 28px;
+  margin-top: 6px;
+  cursor: pointer;
+}
