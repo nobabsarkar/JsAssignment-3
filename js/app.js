@@ -10,7 +10,7 @@ const displayData = (datas) => {
   datas.forEach((data) => {
     const li = document.createElement("li");
     li.innerHTML = `
-            <li>${data.category_name}</li>
+            <li onclick="moreDataLoad('${data.category_id}')">${data.category_name}</li>
         `;
     dataList.appendChild(li);
   });
@@ -18,22 +18,39 @@ const displayData = (datas) => {
 
 loadData();
 
-const moreDataLoad = () => {
-  fetch(`https://openapi.programming-hero.com/api/news/category/01`)
+const spinner = (isLoading) => {
+  const spinner = document.getElementById("spinner");
+  if (isLoading) {
+    spinner.classList.remove("d-none");
+  } else {
+    spinner.classList.add("d-none");
+  }
+};
+
+const moreDataLoad = (id) => {
+  fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
     .then((res) => res.json())
     .then((data) => displayLoadData(data.data));
+  spinner(true);
 };
 
 moreDataLoad();
 
 const displayLoadData = (datas) => {
+  const noNews = document.getElementById("no-news");
+  if (datas.length === 0) {
+    noNews.classList.remove("d-none");
+  } else {
+    noNews.classList.add("d-none");
+  }
+
   const newsCard = document.getElementById("news-card");
+  newsCard.innerHTML = "";
   datas.forEach((data) => {
-    console.log(data);
     const cardDiv = document.createElement("div");
     // cardDiv.classList.add("row g-0");
     cardDiv.innerHTML = `
-  <div class="card mb-3" >
+  <div class="card mb-3 p-1" >
   <div class="row g-0">
     <div class="col-md-6">
       <img src="${
@@ -57,7 +74,9 @@ const displayLoadData = (datas) => {
               data.total_view
             }</p>
           </div>
-          <button class="btn btn-warning"><i class="fa-solid fa-arrow-right"></i></button>
+          <button onclick="modalBody('${
+            data.details
+          }')" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
@@ -66,4 +85,15 @@ const displayLoadData = (datas) => {
     `;
     newsCard.appendChild(cardDiv);
   });
+  spinner(false);
 };
+
+const showModal = (showingModal) => {
+  const modal = document.getElementById("modal-header");
+  modal.innerHTML = `'${showingModal}'`;
+};
+
+// const modalBody = (bodyModal) => {
+//   const modal = document.getElementById("modal-bodys");
+//   modal.innerHTML = `'${bodyModal}'`;
+// };

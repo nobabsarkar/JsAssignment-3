@@ -64,6 +64,17 @@
     <!-- result  -->
     <section class="container py-3">
       <input class="w-100 input_section py-1" type="text" placeholder="News" />
+      <h1 id="no-news" class="mt-5 text-warning text-center d-none">
+        No News Found
+      </h1>
+    </section>
+
+    <section id="spinner" class="container d-none">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </section>
 
     <!-- main section  -->
@@ -76,6 +87,44 @@
           <div class="row">
             <div class="col-md-12">
               <div id="news-card"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- modal -->
+      <section>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div id="modal-header" class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Modal title
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div id="modal-bodys" class="modal-body">...</div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
