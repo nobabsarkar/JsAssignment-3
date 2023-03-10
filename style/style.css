@@ -13,3 +13,6 @@
   margin-top: 6px;
   cursor: pointer;
 }
+.author-img img {
+  width: 52px;
+}
