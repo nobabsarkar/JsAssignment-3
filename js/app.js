@@ -44,14 +44,20 @@ const displayLoadData = (datas) => {
       <div class="card-body">
         <h5 class="card-title mt-2">${data.title}</h5>
         <p class="card-text mt-3">${data.details.slice(0, 200)}...</p>
-        <div>
-          <div class="author-img d-flex align-items-center mt-4">
+        <div class="d-flex align-items-center justify-content-between mt-4">
+          <div class="author-img d-flex align-items-center">
                <img style src="${data.author.img}">
                <div class="ms-1">
                   <h5 class="m-0">${data.author.name}</h5>
                   <p class="m-0">${data.author.published_date}</p>
                </div>
           </div>
+          <div>
+            <p class="m-0"><i class="fa-solid fa-eye"></i> ${
+              data.total_view
+            }</p>
+          </div>
+          <button class="btn btn-warning"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>

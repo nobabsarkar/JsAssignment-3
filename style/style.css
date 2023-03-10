@@ -16,3 +16,9 @@
 .author-img img {
   width: 52px;
 }
+
+.input_section {
+  border: none;
+  outline: none;
+  background: #e9e9e9a1;
+}
